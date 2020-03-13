@@ -11,7 +11,7 @@ func main() {
 	name := "apple"
 	cm := []byte(`{"apiVersion": "v1", "kind": "ConfigMap", "metadata": { "name": "fruit" }, "data": {	"name": "` + name + `" } }`)
 
-	c := klient.NewClient("", "") // Take the Kubernetes config from the default location (~/.kube/config) and using the default context.
+	c := klient.New("", "") // Take the Kubernetes config from the default location (~/.kube/config) and using the default context.
 	if err := c.Apply(cm); err != nil {
 		log.Fatal("failed to apply the ConfigMap")
 	}
